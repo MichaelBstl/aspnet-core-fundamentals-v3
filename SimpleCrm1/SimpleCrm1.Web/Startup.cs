@@ -18,8 +18,9 @@ namespace SimpleCrm1.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(); // turns on all MVC middleware
-
             services.AddSingleton<IGreeter, ConfigurationGreeterConfigFile>();
+            services.AddScoped<ICustomerData, InMemoryCustomerData>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
