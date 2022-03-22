@@ -7,5 +7,6 @@ namespace SimpleCrm1
     public interface ICustomerData
     {
         IEnumerable<Customer> GetAll();
+        Customer Get(int id);
     }
 }

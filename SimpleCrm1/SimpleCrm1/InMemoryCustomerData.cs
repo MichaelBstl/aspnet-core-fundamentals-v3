@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SimpleCrm1
@@ -24,6 +25,11 @@ namespace SimpleCrm1
         public IEnumerable<Customer> GetAll()
         {
             return _customers;
+        }
+        public Customer Get(int id)
+        {
+            Customer customer = _customers.FirstOrDefault((x) => x.Id == id);
+            return customer;
         }
     }
 }

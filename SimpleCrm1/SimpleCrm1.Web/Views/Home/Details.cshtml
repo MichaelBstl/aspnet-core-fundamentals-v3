@@ -1,0 +1,15 @@
+﻿@using SimpleCrm1.Web.Controllers 
+@model SimpleCrm1.Customer
+@{
+}
+
+<h1>@Model.LastName</h1>
+
+<div>
+    <span>
+        @Model.FirstName @Model.LastName @Model.PhoneNumber
+    </span>
+</div>
+<div>
+    @Html.ActionLink("Back", nameof(HomeController.Index))
+</div>

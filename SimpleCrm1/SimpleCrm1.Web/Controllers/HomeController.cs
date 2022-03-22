@@ -26,5 +26,14 @@ namespace SimpleCrm1.Web.Controllers
             };
             return View(model);
         }
+        public IActionResult Details(int id)
+        {
+            Customer customer = _customerData.Get(id);
+            if (customer == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(customer);
+        }
     }
 }
