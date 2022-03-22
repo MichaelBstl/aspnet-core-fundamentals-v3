@@ -35,5 +35,10 @@ namespace SimpleCrm1.Web.Controllers
             }
             return View(customer);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
