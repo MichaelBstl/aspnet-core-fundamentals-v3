@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SimpleCrm.Web.Models.Home;
 using SimpleCrm1.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,25 @@ namespace SimpleCrm1.Web.Controllers
             return View(customer);
         }
 
+        [HttpGet()]
         public IActionResult Create()
         {
             return View();
+        }
+        [HttpPost()]
+        public IActionResult Create(Customer customerModel)
+        {
+            var customer = new Customer
+            {
+                FirstName = customerModel.FirstName,
+                LastName = customerModel.LastName,
+                PhoneNumber = customerModel.PhoneNumber,
+                OptInNewsLetter = customerModel.OptInNewsLetter,
+                Type = customerModel.Type
+            };
+            _customerData.Save(customer);
+
+            return View("Details", customer);
         }
     }
 }

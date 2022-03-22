@@ -20,9 +20,11 @@
         @Html.TextBoxFor(x => x.PhoneNumber)
     </div>
     <div>
+        @Html.LabelFor(x => x.OptInNewsLetter)
         @Html.CheckBoxFor(x => x.OptInNewsLetter)
     </div>
     <div>
+        @Html.LabelFor(x => x.Type)
         @Html.DropDownListFor(x => x.Type, Html.GetEnumSelectList(typeof(CustomerType)))
     </div>
     <div>

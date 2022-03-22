@@ -8,5 +8,6 @@ namespace SimpleCrm1
     {
         IEnumerable<Customer> GetAll();
         Customer Get(int id);
+        void Save(Customer customer);
     }
 }

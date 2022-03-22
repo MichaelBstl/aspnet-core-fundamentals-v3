@@ -7,9 +7,9 @@ namespace SimpleCrm1
 {
     public class InMemoryCustomerData : ICustomerData
     {
-        IList<Customer> _customers;
+        static IList<Customer> _customers;
 
-        public InMemoryCustomerData()
+        static InMemoryCustomerData()
         {
             _customers = new List<Customer>
             {
@@ -30,6 +30,11 @@ namespace SimpleCrm1
         {
             Customer customer = _customers.FirstOrDefault((x) => x.Id == id);
             return customer;
+        }
+        public void Save(Customer customer)
+        {
+            customer.Id = _customers.Max(x => x.Id) + 1;
+            _customers.Add(customer);
         }
     }
 }
