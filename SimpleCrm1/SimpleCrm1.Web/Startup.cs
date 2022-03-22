@@ -43,8 +43,20 @@ namespace SimpleCrm1.Web
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();  // turns on  MVC routing (basic settings)
+                //endpoints.MapDefaultControllerRoute();  // turns on  MVC routing (basic settings)
+                endpoints.MapControllerRoute(
+                    "default", 
+                    "{controller=Home}/{action=Index}/{id?}"
+                );
+                endpoints.MapControllerRoute(
+                    name: "contact",
+                    pattern: "Contact/{phone}",
+                    constraints: new { phone = "^\\d{3}-\\d{3}-\\d{4}$" },
+                    defaults: new { controller = "Contact", action = "List"}
+                );
             });
+
+            app.Run(ctx => ctx.Response.WriteAsync("Not found"));
         }
     }
 }
