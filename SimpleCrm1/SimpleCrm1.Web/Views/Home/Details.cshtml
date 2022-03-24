@@ -1,15 +1,51 @@
-﻿@using SimpleCrm1.Web.Controllers 
+﻿@using SimpleCrm1.Web.Controllers
 @model SimpleCrm1.Customer
 @{
 }
 
 <h1>@Model.LastName</h1>
-
-<div>
-    <span>
-        @Model.FirstName @Model.LastName @Model.PhoneNumber
-    </span>
-</div>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.FirstName)
+        </td>
+        <td>
+            @Model.FirstName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.LastName)
+        </td>
+        <td>
+            @Model.LastName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.PhoneNumber)
+        </td>
+        <td>
+            @Model.PhoneNumber
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.Type)
+        </td>
+        <td>
+            @Model.Type
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.OptInNewsLetter)
+        </td>
+        <td>
+            @Model.OptInNewsLetter
+        </td>
+    </tr>
+</table>
 <div>
     @Html.ActionLink("Back", nameof(HomeController.Index))
 </div>
