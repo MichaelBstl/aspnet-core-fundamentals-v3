@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SimpleCrm.Web.Models.Home;
+using SimpleCrm1.Web.Models.Home;
 using SimpleCrm1.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -43,19 +43,24 @@ namespace SimpleCrm1.Web.Controllers
             return View();
         }
         [HttpPost()]
+        [ValidateAntiForgeryToken()]
         public IActionResult Create(Customer customerModel)
         {
-            var customer = new Customer
+            if (ModelState.IsValid)
             {
-                FirstName = customerModel.FirstName,
-                LastName = customerModel.LastName,
-                PhoneNumber = customerModel.PhoneNumber,
-                OptInNewsLetter = customerModel.OptInNewsLetter,
-                Type = customerModel.Type
-            };
-            _customerData.Save(customer);
+                var customer = new Customer
+                {
+                    FirstName = customerModel.FirstName,
+                    LastName = customerModel.LastName,
+                    PhoneNumber = customerModel.PhoneNumber,
+                    OptInNewsLetter = customerModel.OptInNewsLetter,
+                    Type = customerModel.Type
+                };
+                _customerData.Save(customer);
 
-            return RedirectToAction(nameof(Details), new { id = customer.Id });
+                return RedirectToAction(nameof(Details), new { id = customer.Id });
+            }
+            return View();
         }
     }
 }

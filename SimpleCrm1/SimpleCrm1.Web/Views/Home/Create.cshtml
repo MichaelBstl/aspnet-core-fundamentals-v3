@@ -1,32 +1,42 @@
 ﻿@using SimpleCrm1
-@model SimpleCrm1.Customer
+@model SimpleCrm1.Web.Models.Home.CustomerEditViewModel
 @{
 }
 
-<h1>Create Customer</h1>
-
-@using (Html.BeginForm())
-{
+<div>
+    <h1>Create Customer</h1>
     <div>
-        @Html.LabelFor(x => x.FirstName)
-        @Html.TextBoxFor(x => x.FirstName)
+        @Html.ValidationSummary()
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(x => x.FirstName)
+                @Html.TextBoxFor(x => x.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.LabelFor(x => x.LastName)
+                @Html.TextBoxFor(x => x.LastName)
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.LabelFor(x => x.PhoneNumber)
+                @Html.TextBoxFor(x => x.PhoneNumber)
+                @Html.ValidationMessageFor(m => m.PhoneNumber)
+            </div>
+            <div>
+                @Html.LabelFor(x => x.OptInNewsLetter)
+                @Html.CheckBoxFor(x => x.OptInNewsLetter)
+                @Html.ValidationMessageFor(m => m.OptInNewsLetter)
+            </div>
+            <div>
+                @Html.LabelFor(x => x.Type)
+                @Html.DropDownListFor(x => x.Type, Html.GetEnumSelectList(typeof(CustomerType)))
+                @Html.ValidationMessageFor(m => m.Type)
+            </div>
+            <div>
+                <input type="submit" value="Save" />
+            </div>
+        }
     </div>
-    <div>
-        @Html.LabelFor(x => x.LastName)
-        @Html.TextBoxFor(x => x.LastName)
-    </div>
-    <div>
-        @Html.LabelFor(x => x.PhoneNumber)
-        @Html.TextBoxFor(x => x.PhoneNumber)
-    </div>
-    <div>
-        @Html.LabelFor(x => x.OptInNewsLetter)
-        @Html.CheckBoxFor(x => x.OptInNewsLetter)
-    </div>
-    <div>
-        @Html.LabelFor(x => x.Type)
-        @Html.DropDownListFor(x => x.Type, Html.GetEnumSelectList(typeof(CustomerType)))
-    </div>
-    <div>
-        <input type="submit" value="Save" />
-    </div>}
+</div>
