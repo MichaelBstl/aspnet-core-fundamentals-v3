@@ -15,7 +15,7 @@ namespace SimpleCrm1.Web
 {
     public class Startup
     {
-        public IConfiguration Configuration { get };
+        public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
         {

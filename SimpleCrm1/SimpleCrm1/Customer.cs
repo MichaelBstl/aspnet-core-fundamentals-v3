@@ -8,9 +8,9 @@ namespace SimpleCrm1
     public class Customer
     {
         public int Id { get; set; }
-        [Display(Name = "First Name"), Required, MaxLength(100)]
+        [Display(Name = "First Name"), Required, MaxLength(50)]
         public string FirstName { get; set; }
-        [Display(Name = "Last Name"), Required, MaxLength(100)]
+        [Display(Name = "Last Name"), Required, MaxLength(50)]
         public string LastName { get; set; }
         [Display(Name = "Phone Number"), DataType(DataType.PhoneNumber), Required, MinLength(7), MaxLength(12)]
         public string PhoneNumber { get; set; }
